@@ -1,6 +1,3 @@
-import React from "react";
-import "./Footer.module.scss";
-
 export default function Footer() {
   const disclaimer = `The cost ranges are  from nationally AI repair cost guides and are designed for budget purposes only. The costs reflect prices in typical metropolitan areas. The User should always consult a licensed qualified contractor for repair options and costs for major items as repair costs can vary widely dependent upon quality of materials used and economic conditions. Obtain two or three estimates from reputable contractors  actual costs may vary.`;
   const disclaimerStyle = {
@@ -14,7 +11,7 @@ export default function Footer() {
   };
 
   const footerStyle = {
-    backgroundColor: "lightgray",
+    // backgroundColor: "lightgray",
     fontSize: "5px",
     color: "gray",
   };

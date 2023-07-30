@@ -915,7 +915,8 @@ export function Chat() {
   const isChat = location.pathname === Path.Chat;
 
   const autoFocus = !isMobileScreen || isChat; // only focus in chat page
-  const showMaxIcon = !isMobileScreen && !clientConfig?.isApp;
+  // const showMaxIcon = !isMobileScreen && !clientConfig?.isApp;
+  const showMinIcon = isMobileScreen || clientConfig?.isApp;
 
   useCommand({
     fill: setUserInput,
@@ -1012,19 +1013,32 @@ export function Chat() {
               }}
             />
           </div>
-          {showMaxIcon && (
-            <div className="window-action-button">
-              <IconButton
-                icon={config.tightBorder ? <MinIcon /> : <MaxIcon />}
-                bordered
-                onClick={() => {
-                  config.update(
-                    (config) => (config.tightBorder = !config.tightBorder),
-                  );
-                }}
-              />
-            </div>
+          {showMinIcon && (
+              <div className="window-action-button">
+                <IconButton
+                    icon={config.tightBorder ? <MinIcon /> : <MaxIcon />}
+                    bordered
+                    onClick={() => {
+                      config.update(
+                          (config) => (config.tightBorder = !config.tightBorder),
+                      );
+                    }}
+                />
+              </div>
           )}
+          {/*{showMaxIcon && (*/}
+          {/*  <div className="window-action-button">*/}
+          {/*    <IconButton*/}
+          {/*      icon={config.tightBorder ? <MinIcon /> : <MaxIcon />}*/}
+          {/*      bordered*/}
+          {/*      onClick={() => {*/}
+          {/*        config.update(*/}
+          {/*          (config) => (config.tightBorder = !config.tightBorder),*/}
+          {/*        );*/}
+          {/*      }}*/}
+          {/*    />*/}
+          {/*  </div>*/}
+          {/*)}*/}
         </div>
 
         <PromptToast
@@ -1215,6 +1229,7 @@ export function Chat() {
           <IconButton
             icon={<MaskIcon />}
             text={"I'm feeling lucky"}
+            onClick={() => {setUserInput(userInput=>userInput+",帮我总结维修清单，并且根据本地（读取州的内容）给出维修评估报价，并且给出设定语言的另一个版本输出")}}
             // text={
             //   <span style={{ fontSize: "20px" }}> I&apos;m feeling lucky</span>
             // }
