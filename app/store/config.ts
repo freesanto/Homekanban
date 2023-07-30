@@ -37,6 +37,18 @@ export const DEFAULT_CONFIG = {
   customModels: "",
   models: DEFAULT_MODELS as any as LLMModel[],
 
+  //设置模型参数
+  // 随机性
+  // 核采样
+  // 单次回复限制(max_tokens单次交互所用的最大Token 数
+  // 话题新鲜度(presence_penalty)值越大，越有可能扩展到新话题
+  // 频率惩罚度(frequency_penalty)值越大，越有可能降低重复字词
+  // 注入系统级提示信息强制给每次请求的消息列表开头添加一个模拟ChatGPT的系统提示
+  // 用户输入预处理用户最新的一条消息会填充到此模板
+  // 附带历史消息数
+  // 每次请求携带的历史消息数
+  // 历史消息长度压缩闻值
+  // 当未压缩的历史消息超过该值时，将进行压缩
   modelConfig: {
     model: "gpt-3.5-turbo" as ModelType,
     temperature: 0.5,

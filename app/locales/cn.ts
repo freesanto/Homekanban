@@ -53,7 +53,7 @@ const cn = {
         light: "亮色模式",
         dark: "深色模式",
       },
-      Prompt: "快捷指令",
+      Prompt: "地区选择",
       Masks: "所有面具",
       Clear: "清除聊天",
       Settings: "对话设置",
@@ -233,6 +233,8 @@ const cn = {
       Title: "自定义模型名",
       SubTitle: "增加自定义模型可选项，使用英文逗号隔开",
     },
+
+
     Model: "模型 (model)",
     Temperature: {
       Title: "随机性 (temperature)",
