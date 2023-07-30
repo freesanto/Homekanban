@@ -14,9 +14,8 @@ import { getCSSVar, useMobileScreen } from "../utils";
 import dynamic from "next/dynamic";
 import { Path, SlotID } from "../constant";
 import { ErrorBoundary } from "./error";
-
 import { getLang } from "../locales";
-
+import Footer from "@/app/components/Footer";
 import {
   HashRouter as Router,
   Routes,

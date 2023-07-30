@@ -50,7 +50,9 @@
     }
   }
 }
-
+.lucky-button{
+  width: 100%;
+}
 .prompt-toast {
   position: absolute;
   bottom: -50px;
@@ -395,7 +397,7 @@
 .chat-input-panel {
   position: relative;
   width: 100%;
-  padding: 20px;
+  padding: 15px;
   padding-top: 10px;
   box-sizing: border-box;
   flex-direction: column;
@@ -491,9 +493,13 @@
   background-color: var(--primary);
   color: white;
 
-  position: absolute;
-  right: 30px;
-  bottom: 32px;
+  //position: absolute;
+  //right: 30px;
+  //bottom: 32px;
+  position: relative;
+  right: 0;
+  top: 0;
+  width: 80px;
 }
 
 @media only screen and (max-width: 600px) {

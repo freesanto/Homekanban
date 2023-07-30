@@ -82,6 +82,7 @@ import { ChatCommandPrefix, useChatCommand, useCommand } from "../command";
 import { prettyObject } from "../utils/format";
 import { ExportMessageModal } from "./exporter";
 import { getClientConfig } from "../config/client";
+import Footer from "@/app/components/Footer";
 
 const Markdown = dynamic(async () => (await import("./markdown")).Markdown, {
   loading: () => <LoadingIcon />,
@@ -451,21 +452,21 @@ export function ChatActions(props: {
         />
       )}
 
-      <ChatAction
-        onClick={nextTheme}
-        text={Locale.Chat.InputActions.Theme[theme]}
-        icon={
-          <>
-            {theme === Theme.Auto ? (
-              <AutoIcon />
-            ) : theme === Theme.Light ? (
-              <LightIcon />
-            ) : theme === Theme.Dark ? (
-              <DarkIcon />
-            ) : null}
-          </>
-        }
-      />
+      {/*<ChatAction*/}
+      {/*  onClick={nextTheme}*/}
+      {/*  text={Locale.Chat.InputActions.Theme[theme]}*/}
+      {/*  icon={*/}
+      {/*    <>*/}
+      {/*      {theme === Theme.Auto ? (*/}
+      {/*        <AutoIcon />*/}
+      {/*      ) : theme === Theme.Light ? (*/}
+      {/*        <LightIcon />*/}
+      {/*      ) : theme === Theme.Dark ? (*/}
+      {/*        <DarkIcon />*/}
+      {/*      ) : null}*/}
+      {/*    </>*/}
+      {/*  }*/}
+      {/*/>*/}
 
       <ChatAction
         onClick={props.showPromptHints}
@@ -473,13 +474,13 @@ export function ChatActions(props: {
         icon={<PromptIcon />}
       />
 
-      <ChatAction
-        onClick={() => {
-          navigate(Path.Masks);
-        }}
-        text={Locale.Chat.InputActions.Masks}
-        icon={<MaskIcon />}
-      />
+      {/*<ChatAction*/}
+      {/*  onClick={() => {*/}
+      {/*    navigate(Path.Masks);*/}
+      {/*  }}*/}
+      {/*  text={Locale.Chat.InputActions.Masks}*/}
+      {/*  icon={<MaskIcon />}*/}
+      {/*/>*/}
 
       <ChatAction
         text={Locale.Chat.InputActions.Clear}
@@ -496,11 +497,11 @@ export function ChatActions(props: {
         }}
       />
 
-      <ChatAction
-        onClick={() => setShowModelSelector(true)}
-        text={currentModel}
-        icon={<RobotIcon />}
-      />
+      {/*<ChatAction*/}
+      {/*  onClick={() => setShowModelSelector(true)}*/}
+      {/*  text={currentModel}*/}
+      {/*  icon={<RobotIcon />}*/}
+      {/*/>*/}
 
       {showModelSelector && (
         <Selector
@@ -987,6 +988,9 @@ export function Chat() {
           <div className="window-header-sub-title">
             {Locale.Chat.SubTitle(session.messages.length)}
           </div>
+          {/*<div className="window-header-disclaimer">*/}
+          {/*  {Locale.Chat.Disclaimer(session.messages.length)}*/}
+          {/*</div>*/}
         </div>
         <div className="window-actions">
           {!isMobileScreen && (
@@ -1151,11 +1155,11 @@ export function Chat() {
                     />
                   </div>
 
-                  <div className={styles["chat-message-action-date"]}>
-                    {isContext
-                      ? Locale.Chat.IsContext
-                      : message.date.toLocaleString()}
-                  </div>
+                  {/*<div className={styles["chat-message-action-date"]}>*/}
+                  {/*  {isContext*/}
+                  {/*    ? Locale.Chat.IsContext*/}
+                  {/*    : message.date.toLocaleString()}*/}
+                  {/*</div>*/}
                 </div>
               </div>
               {shouldShowClearContextDivider && <ClearContextDivider />}
@@ -1207,7 +1211,18 @@ export function Chat() {
             onClick={() => doSubmit(userInput)}
           />
         </div>
+        <div>
+          <IconButton
+            icon={<MaskIcon />}
+            text={"I'm feeling lucky"}
+            // text={
+            //   <span style={{ fontSize: "20px" }}> I&apos;m feeling lucky</span>
+            // }
+            className={styles["lucky-button"]}
+          />
+        </div>
       </div>
+      <Footer />
 
       {showExport && (
         <ExportMessageModal onClose={() => setShowExport(false)} />
