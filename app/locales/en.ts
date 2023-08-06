@@ -56,6 +56,7 @@ const en: LocaleType = {
         dark: "Dark Theme",
       },
       Prompt: "Prompts",
+      OutLang: "Language Select",
       Masks: "Masks",
       Clear: "Clear Context",
       Settings: "Settings",

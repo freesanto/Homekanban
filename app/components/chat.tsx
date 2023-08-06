@@ -396,6 +396,7 @@ export function ChatActions(props: {
   showPromptModal: () => void;
   scrollToBottom: () => void;
   showPromptHints: () => void;
+  showPromptOutLang: () => void;
   hitBottom: boolean;
 }) {
   const config = useAppConfig();
@@ -474,6 +475,14 @@ export function ChatActions(props: {
         icon={<PromptIcon />}
       />
 
+      {/*语言选择*/}
+      {/*<ChatAction*/}
+      {/*    onClick={props.showPromptOutLang}*/}
+      {/*    text={Locale.Chat.InputActions.OutLang}*/}
+      {/*    icon={<PromptIcon />}*/}
+      {/*/>*/}
+
+      {/*面具*/}
       {/*<ChatAction*/}
       {/*  onClick={() => {*/}
       {/*    navigate(Path.Masks);*/}
@@ -616,6 +625,7 @@ export function Chat() {
   // prompt hints
   const promptStore = usePromptStore();
   const [promptHints, setPromptHints] = useState<RenderPompt[]>([]);
+  const [promptOutLang, setPromptOutLang] = useState<RenderPompt[]>([]);
   const onSearch = useDebouncedCallback(
     (text: string) => {
       const matchedPrompts = promptStore.search(text);
@@ -679,6 +689,7 @@ export function Chat() {
     }
   };
 
+  //位置1
   const doSubmit = (userInput: string) => {
     if (userInput.trim() === "") return;
     const matchCommand = chatCommands.match(userInput);
@@ -706,9 +717,11 @@ export function Chat() {
         // if user is selecting a chat command, just trigger it
         matchedChatCommand.invoke();
         setUserInput("");
+        // setUserInput(userInput+prompt.content);
       } else {
         // or fill the prompt
-        setUserInput(prompt.content);
+        // setUserInput(prompt.content);
+        setUserInput(userInput+prompt.content);
       }
       inputRef.current?.focus();
     }, 30);
@@ -1197,6 +1210,17 @@ export function Chat() {
             }
 
             inputRef.current?.focus();
+            // setUserInput("/");
+            onSearch("");
+          }}
+          showPromptOutLang={() => {
+            // Click again to close
+            if (promptHints.length > 0) {
+              setPromptHints([]);
+              return;
+            }
+
+            inputRef.current?.focus();
             setUserInput("/");
             onSearch("");
           }}
@@ -1229,10 +1253,9 @@ export function Chat() {
           <IconButton
             icon={<MaskIcon />}
             text={"I'm feeling lucky"}
-            onClick={() => {setUserInput(userInput=>userInput+",帮我总结维修清单，并且根据本地（读取州的内容）给出维修评估报价，并且给出设定语言的另一个版本输出")}}
-            // text={
-            //   <span style={{ fontSize: "20px" }}> I&apos;m feeling lucky</span>
-            // }
+            onClick={ () => {
+              doSubmit(userInput+", 帮我总结维修清单, 并且根据本地（读取州的内容）给出维修评估报价, 并且给出设定语言的另一个版本输出");
+            }}
             className={styles["lucky-button"]}
           />
         </div>
