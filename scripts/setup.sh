@@ -52,9 +52,9 @@ fi
 
 # Clone the repository and install dependencies
 #git clone https://github.com/Yidadaa/ChatGPT-Next-Web
-git clone https://github.com/JonathanVLai/ChatGPT-Next-Web.git
+git clone https://github.com/freesanto/Homkanban.git
 
-cd ChatGPT-Next-Web
+cd Homkanban
 yarn install
 
 # Prompt user for environment variables
