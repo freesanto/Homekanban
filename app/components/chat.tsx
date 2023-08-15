@@ -83,6 +83,7 @@ import { prettyObject } from "../utils/format";
 import { ExportMessageModal } from "./exporter";
 import { getClientConfig } from "../config/client";
 import Footer from "@/app/components/Footer";
+import lang from "khroma/src/utils/lang";
 
 const Markdown = dynamic(async () => (await import("./markdown")).Markdown, {
   loading: () => <LoadingIcon />,
@@ -453,6 +454,7 @@ export function ChatActions(props: {
         />
       )}
 
+      {/*背景色*/}
       {/*<ChatAction*/}
       {/*  onClick={nextTheme}*/}
       {/*  text={Locale.Chat.InputActions.Theme[theme]}*/}
@@ -475,7 +477,7 @@ export function ChatActions(props: {
         icon={<PromptIcon />}
       />
 
-      {/*语言选择*/}
+      {/*语言选择, 暂时不用*/}
       {/*<ChatAction*/}
       {/*    onClick={props.showPromptOutLang}*/}
       {/*    text={Locale.Chat.InputActions.OutLang}*/}
@@ -594,7 +596,8 @@ export function EditMessageModal(props: { onClose: () => void }) {
     </div>
   );
 }
-
+let Region: string | null="Texas"
+let Lang: string | null = "English";
 export function Chat() {
   type RenderMessage = ChatMessage & { preview?: boolean };
 
@@ -603,7 +606,10 @@ export function Chat() {
     state.currentSession(),
     state.currentSessionIndex,
   ]);
+
   const config = useAppConfig();
+  //设置窄边框
+  config.tightBorder=false
   const fontSize = config.fontSize;
 
   const [showExport, setShowExport] = useState(false);
@@ -708,6 +714,88 @@ export function Chat() {
     setAutoScroll(true);
   };
 
+
+  //提取语言或地区
+  function extractRegion(input: string): string | null {
+    // 可以根据需要添加更多地区关键词
+    const locationKeywords = [
+      "Alabama",
+      "Alaska",
+      "Arizona",
+      "Arkansas",
+      "California",
+      "Colorado",
+      "Connecticut",
+      "Delaware",
+      "Florida",
+      "Georgia",
+      "Hawaii",
+      "Idaho",
+      "Illinois",
+      "Indiana",
+      "Iowa",
+      "Kansas",
+      "Kentucky",
+      "Louisiana",
+      "Maine",
+      "Maryland",
+      "Massachusetts",
+      "Michigan",
+      "Minnesota",
+      "Mississippi",
+      "Missouri",
+      "Montana",
+      "Nebraska",
+      "Nevada",
+      "New Hampshire",
+      "New Jersey",
+      "New Mexico",
+      "New York",
+      "North Carolina",
+      "North Dakota",
+      "Ohio",
+      "Oklahoma",
+      "Oregon",
+      "Pennsylvania",
+      "Rhode Island",
+      "South Carolina",
+      "South Dakota",
+      "Tennessee",
+      "Texas",
+      "Utah",
+      "Vermont",
+      "Virginia",
+      "Washington",
+      "West Virginia",
+      "Wisconsin",
+      "Wyoming"];
+
+    const lowercaseInput = input.toLowerCase();
+
+    // 检查是否包含地区关键词
+    for (const keyword of locationKeywords) {
+      if (lowercaseInput.includes(keyword.toLowerCase())) {
+        return keyword;
+      }
+    }
+
+    return null; // 如果未找到匹配的关键词，则返回 null
+  }
+  function extractLang(input: string): string | null {
+    const languageKeywords = ["Simplified Chinese", "Traditional Chinese", "Korean","Spanish"]; // 可以根据需要添加更多语言关键词
+
+    const lowercaseInput = input.toLowerCase();
+
+    // 检查是否包含语言关键词
+    for (const keyword of languageKeywords) {
+      if (lowercaseInput.includes(keyword.toLowerCase())) {
+        return keyword;
+      }
+    }
+
+    return null; // 如果未找到匹配的关键词，则返回 null
+  }
+  //选择地区或语言
   const onPromptSelect = (prompt: RenderPompt) => {
     setTimeout(() => {
       setPromptHints([]);
@@ -717,11 +805,11 @@ export function Chat() {
         // if user is selecting a chat command, just trigger it
         matchedChatCommand.invoke();
         setUserInput("");
-        // setUserInput(userInput+prompt.content);
       } else {
-        // or fill the prompt
-        // setUserInput(prompt.content);
-        setUserInput(userInput+prompt.content);
+        // setUserInput(userInput+prompt.content);
+        //设置地区或是语言变量
+        Lang=(extractLang(prompt.title))==null?Lang:(extractLang(prompt.title))
+        Region=(extractRegion(prompt.title))==null?Region:(extractRegion(prompt.title))
       }
       inputRef.current?.focus();
     }, 30);
@@ -928,7 +1016,7 @@ export function Chat() {
   const isChat = location.pathname === Path.Chat;
 
   const autoFocus = !isMobileScreen || isChat; // only focus in chat page
-  // const showMaxIcon = !isMobileScreen && !clientConfig?.isApp;
+  const showMaxIcon = !isMobileScreen && !clientConfig?.isApp;
   const showMinIcon = isMobileScreen || clientConfig?.isApp;
 
   useCommand({
@@ -1026,6 +1114,8 @@ export function Chat() {
               }}
             />
           </div>
+
+          {/*缩小按钮*/}
           {showMinIcon && (
               <div className="window-action-button">
                 <IconButton
@@ -1039,19 +1129,22 @@ export function Chat() {
                 />
               </div>
           )}
-          {/*{showMaxIcon && (*/}
-          {/*  <div className="window-action-button">*/}
-          {/*    <IconButton*/}
-          {/*      icon={config.tightBorder ? <MinIcon /> : <MaxIcon />}*/}
-          {/*      bordered*/}
-          {/*      onClick={() => {*/}
-          {/*        config.update(*/}
-          {/*          (config) => (config.tightBorder = !config.tightBorder),*/}
-          {/*        );*/}
-          {/*      }}*/}
-          {/*    />*/}
-          {/*  </div>*/}
-          {/*)}*/}
+
+          {/*放大按钮*/}
+          {showMaxIcon && (
+            <div className="window-action-button">
+              <IconButton
+                icon={config.tightBorder ? <MinIcon /> : <MaxIcon />}
+                bordered
+                onClick={() => {
+                  config.update(
+                    (config) => (config.tightBorder = !config.tightBorder),
+                  );
+                }}
+              />
+            </div>
+          )}
+
         </div>
 
         <PromptToast
@@ -1210,7 +1303,6 @@ export function Chat() {
             }
 
             inputRef.current?.focus();
-            // setUserInput("/");
             onSearch("");
           }}
           showPromptOutLang={() => {
@@ -1254,7 +1346,14 @@ export function Chat() {
             icon={<MaskIcon />}
             text={"I'm feeling lucky"}
             onClick={ () => {
-              doSubmit(userInput+", 帮我总结维修清单, 并且根据本地（读取州的内容）给出维修评估报价, 并且给出设定语言的另一个版本输出");
+              console.log("地区:"+Region)
+              console.log("语言:"+Lang)
+              // console.log("语言:"+Lang)
+              // doSubmit(userInput+", 帮我总结维修清单, 并且根据本地（读取州的内容）给出维修评估报价, 并且给出设定语言的另一个版本输出");
+              // doSubmit(userInput+", 帮我总结维修清单, 并且根据本地"+Region+"给出维修评估报价, 并且给出"+Lang+"的另一个版本输出");
+              doSubmit("Based on the information below, please provide a repair quote list with estimated costs for \n" +
+                  "materials and labor in (" + Region + "), USA. Approximate numbers are fine if exact figures are \n" +
+                  "unavailable. Please provide the output in both English and (" + Lang + "): " + userInput);
             }}
             className={styles["lucky-button"]}
           />

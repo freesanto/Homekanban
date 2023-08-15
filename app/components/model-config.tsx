@@ -12,20 +12,22 @@ export function ModelConfigList(props: {
 
     return (
         <>
-            <ListItem title={Locale.Settings.Lang.Name}>
-                <Select
-                    value={getLang()}
-                    onChange={(e) => {
-                        changeLang(e.target.value as any);
-                    }}
-                >
-                    {AllLangs.map((lang) => (
-                        <option value={lang} key={lang}>
-                            {ALL_LANG_OPTIONS[lang]}
-                        </option>
-                    ))}
-                </Select>
-            </ListItem>
+            {/*设置语言*/}
+            {/*<ListItem title={Locale.Settings.Lang.Name}>*/}
+            {/*    <Select*/}
+            {/*        value={getLang()}*/}
+            {/*        onChange={(e) => {*/}
+            {/*            changeLang(e.target.value as any);*/}
+            {/*        }}*/}
+            {/*    >*/}
+            {/*        {AllLangs.map((lang) => (*/}
+            {/*            <option value={lang} key={lang}>*/}
+            {/*                {ALL_LANG_OPTIONS[lang]}*/}
+            {/*            </option>*/}
+            {/*        ))}*/}
+            {/*    </Select>*/}
+            {/*</ListItem>*/}
+
             {/*<ListItem title={Locale.Settings.Model}>*/}
             {/*    <Select*/}
             {/*        value={props.modelConfig.model}*/}

@@ -115,7 +115,7 @@ function fillTemplateWith(input: string, modelConfig: ModelConfig) {
   const vars = {
     model: modelConfig.model,
     time: new Date().toLocaleString(),
-    lang: getLang(),
+    // lang: getLang(),
     input: input,
   };
 
