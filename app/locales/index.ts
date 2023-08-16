@@ -16,8 +16,8 @@ import ar from "./ar";
 import bn from "./bn";
 import { merge } from "../utils/merge";
 
-import type { LocaleType } from "./en";
-export type { LocaleType, PartialLocaleType } from "./en";
+import type { LocaleType } from "./cn";
+export type { LocaleType, PartialLocaleType } from "./cn";
 
 const ALL_LANGS = {
   en,
