@@ -358,4 +358,4 @@ const en: LocaleType = {
   },
 };
 
-export default cn;
+export default en;
