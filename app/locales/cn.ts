@@ -1,8 +1,7 @@
 import { SubmitKey } from "../store/config";
-import { LocaleType } from "./index";
 
 // if you are adding a new translation, please use PartialLocaleType instead of LocaleType
-const en: LocaleType = {
+const cn = {
   WIP: "Coming Soon...",
   Error: {
     Unauthorized:
@@ -352,10 +351,14 @@ const en: LocaleType = {
     Time: "Time",
   },
 
-  URLCommand: {
-    Code: "Detected access code from url, confirm to apply? ",
-    Settings: "Detected settings from url, confirm to apply?",
-  },
+
 };
 
-export default en;
+type DeepPartial<T> = T extends object
+  ? {
+      [P in keyof T]?: DeepPartial<T[P]>;
+    }
+  : T;
+export type LocaleType = typeof cn;
+export type PartialLocaleType = DeepPartial<typeof cn>;
+export default cn;
