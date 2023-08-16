@@ -1,7 +1,8 @@
 import { SubmitKey } from "../store/config";
+import { LocaleType } from "./index";
 
 // if you are adding a new translation, please use PartialLocaleType instead of LocaleType
-const cn = {
+const cn: LocaleType = {
   WIP: "Coming Soon...",
   Error: {
     Unauthorized:
@@ -337,6 +338,10 @@ const cn = {
     ConfirmNoShow: "Confirm to disable？You can enable it in settings later.",
   },
 
+  URLCommand: {
+    Code: "检测到链接中已经包含访问码，是否自动填入？",
+    Settings: "检测到链接中包含了预制设置，是否自动填入？",
+  },
   UI: {
     Confirm: "Confirm",
     Cancel: "Cancel",
@@ -359,6 +364,7 @@ type DeepPartial<T> = T extends object
       [P in keyof T]?: DeepPartial<T[P]>;
     }
   : T;
+
 export type LocaleType = typeof cn;
 export type PartialLocaleType = DeepPartial<typeof cn>;
 export default cn;
