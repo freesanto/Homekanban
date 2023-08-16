@@ -20,8 +20,8 @@ import type { LocaleType } from "./cn";
 export type { LocaleType, PartialLocaleType } from "./cn";
 
 const ALL_LANGS = {
-  cn,
   en,
+  cn,
   tw,
   ko,
   es,
@@ -43,8 +43,8 @@ export type Lang = keyof typeof ALL_LANGS;
 export const AllLangs = Object.keys(ALL_LANGS) as Lang[];
 
 export const ALL_LANG_OPTIONS: Record<Lang, string> = {
-  cn: "简体中文",
   en: "English",
+  cn: "简体中文",
   tw: "繁體中文",
   ko: "한국어",    //  韩语
   es: "Español",  //西班牙语
