@@ -1352,8 +1352,8 @@ export function Chat() {
               // doSubmit(userInput+", 帮我总结维修清单, 并且根据本地（读取州的内容）给出维修评估报价, 并且给出设定语言的另一个版本输出");
               // doSubmit(userInput+", 帮我总结维修清单, 并且根据本地"+Region+"给出维修评估报价, 并且给出"+Lang+"的另一个版本输出");
               doSubmit("Based on the information below, please provide a repair quote list with estimated costs for \n" +
-                  "materials and labor in (" + Region + "), USA. Approximate numbers are fine if exact figures are \n" +
-                  "unavailable. Please provide the output in both English and (" + Lang + "): " + userInput);
+                  "materials and labor in " + Region + ", USA. Approximate numbers are fine if exact figures are \n" +
+                  "unavailable. Please provide the output in both English and " + Lang + ": " + userInput);
             }}
             className={styles["lucky-button"]}
           />
