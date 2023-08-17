@@ -123,7 +123,7 @@ export function SideBar(props: { className?: string }) {
           Homekanban
         </div>
         <div className={styles["sidebar-sub-title"]}>
-          Your AI Cost assessment
+          Your AI Cost Assessment
         </div>
         <div className={styles["sidebar-logo"] + " no-dark"}>
           {/*<LogoIcon/>*/}
