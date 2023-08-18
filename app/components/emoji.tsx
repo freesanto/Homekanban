@@ -7,7 +7,7 @@ import EmojiPicker, {
 import { ModelType } from "../store";
 
 import BotIcon from "../icons/bot.svg";
-import Logo from "../icons/logo.jpg";
+import Logo from "../icons/logo.png";
 import BlackBotIcon from "../icons/black-bot.svg";
 import NextImage from "next/image";
 
