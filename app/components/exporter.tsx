@@ -17,7 +17,7 @@ import { copyToClipboard, downloadAs, useMobileScreen } from "../utils";
 import CopyIcon from "../icons/copy.svg";
 import LoadingIcon from "../icons/three-dots.svg";
 import ChatGptIcon from "../icons/chatgpt.png";
-import Logo from "../icons/logo.jpg";
+import Logo from "../icons/logo.png";
 import ShareIcon from "../icons/share.svg";
 import BotIcon from "../icons/bot.png";
 
