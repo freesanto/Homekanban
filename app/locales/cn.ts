@@ -55,7 +55,7 @@ const cn = {
         dark: "Dark Theme",
       },
       Prompt: "State",
-      OutLang: "Language Select",
+      Lang: "Language Select",
       Masks: "Masks",
       Clear: "Clear Context",
       Settings: "Settings",
