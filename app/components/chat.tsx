@@ -397,7 +397,7 @@ export function ChatActions(props: {
   showPromptModal: () => void;
   scrollToBottom: () => void;
   showPromptHints: () => void;
-  showPromptOutLang: () => void;
+  showLangHints: () => void;
   hitBottom: boolean;
 }) {
   const config = useAppConfig();
@@ -479,8 +479,8 @@ export function ChatActions(props: {
 
       {/*语言选择, 暂时不用*/}
       {/*<ChatAction*/}
-      {/*    onClick={props.showPromptOutLang}*/}
-      {/*    text={Locale.Chat.InputActions.OutLang}*/}
+      {/*    onClick={props.showLangHints}*/}
+      {/*    text={Locale.Chat.InputActions.Lang}*/}
       {/*    icon={<PromptIcon />}*/}
       {/*/>*/}
 
@@ -596,8 +596,8 @@ export function EditMessageModal(props: { onClose: () => void }) {
     </div>
   );
 }
-let Region: string | null="Texas"
-let Lang: string | null = "English";
+let Region: string="Texas"
+let Lang: string = "English";
 export function Chat() {
   type RenderMessage = ChatMessage & { preview?: boolean };
 
@@ -808,8 +808,10 @@ export function Chat() {
       } else {
         // setUserInput(userInput+prompt.content);
         //设置地区或是语言变量
-        Lang=(extractLang(prompt.title))==null?Lang:(extractLang(prompt.title))
-        Region=(extractRegion(prompt.title))==null?Region:(extractRegion(prompt.title))
+        //Lang=(extractLang(prompt.title))==null?Lang:(extractLang(prompt.title))
+        //Region=(extractRegion(prompt.title))==null?Region:(extractRegion(prompt.title))
+        Lang = extractedLang == undefined ? Lang : extractedLang;
+        Region = extractedRegion == undefined ? Region : extractedRegion;
       }
       inputRef.current?.focus();
     }, 30);
@@ -1305,7 +1307,7 @@ export function Chat() {
             inputRef.current?.focus();
             onSearch("");
           }}
-          showPromptOutLang={() => {
+          showLangHints={() => {
             // Click again to close
             if (promptHints.length > 0) {
               setPromptHints([]);
