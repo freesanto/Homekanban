@@ -1,3 +1,4 @@
+import Lang from "khroma/dist/utils/lang";
 export const OWNER = "Yidadaa";
 export const REPO = "ChatGPT-Next-Web";
 export const REPO_URL = `https://github.com/${OWNER}/${REPO}`;
@@ -24,7 +25,8 @@ export enum SlotID {
 
 export enum FileName {
   Masks = "masks.json",
-  Prompts = "prompts.json",
+  //Prompts = "prompts.json",
+  "Region&Lang" = "prompts.json",
 }
 
 export enum StoreKey {
