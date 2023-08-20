@@ -59,7 +59,7 @@ import dynamic from "next/dynamic";
 
 import { ChatControllerPool } from "../client/controller";
 import { Prompt, usePromptStore } from "../store/prompt";
-import { Lang, useLangStore } from "../store/lang";
+// import { Lang, useLangStore } from "../store/lang";
 import Locale from "../locales";
 
 import { IconButton } from "./button";
@@ -532,6 +532,10 @@ export function ChatActions(props: {
           }}
         />
       )}
+      {/*显示当前语言地区1*/}
+      <IconButton
+          text={"Region: " + Region + " & Output Language: " + Lang}
+      />
     </div>
   );
 }
@@ -808,9 +812,10 @@ export function Chat() {
         setUserInput("");
       } else {
         // setUserInput(userInput+prompt.content);
+        let extractedLang = extractLang(prompt.title);
+        let extractedRegion = extractRegion(prompt.title);
+
         //设置地区或是语言变量
-        //Lang=(extractLang(prompt.title))==null?Lang:(extractLang(prompt.title))
-        //Region=(extractRegion(prompt.title))==null?Region:(extractRegion(prompt.title))
         Lang = extractedLang == undefined ? Lang : extractedLang;
         Region = extractedRegion == undefined ? Region : extractedRegion;
       }
@@ -1292,6 +1297,7 @@ export function Chat() {
       </div>
 
       <div className={styles["chat-input-panel"]}>
+        {/*显示当前语言地区2*/}
         <PromptHints prompts={promptHints} onPromptSelect={onPromptSelect} />
 
         <ChatActions
@@ -1355,8 +1361,8 @@ export function Chat() {
               // doSubmit(userInput+", 帮我总结维修清单, 并且根据本地（读取州的内容）给出维修评估报价, 并且给出设定语言的另一个版本输出");
               // doSubmit(userInput+", 帮我总结维修清单, 并且根据本地"+Region+"给出维修评估报价, 并且给出"+Lang+"的另一个版本输出");
               doSubmit("Based on the information below, please provide a repair quote list with estimated costs for \n" +
-                  "materials and labor in " + Region + ", USA. Approximate numbers are fine if exact figures are \n" +
-                  "unavailable. Please provide the output in both English and " + Lang + ": " + userInput);
+                  "materials and labor in (" + Region + "), USA. Approximate numbers are fine if exact figures are \n" +
+                  "unavailable. Please provide the output in both English and (" + Lang + "): " + userInput);
             }}
             className={styles["lucky-button"]}
           />
