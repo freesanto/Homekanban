@@ -137,7 +137,7 @@ export const useLangStore = create<LangStore>()(
       },
     }),
     {
-      name: StoreKey.Lang,
+      name: StoreKey.Prompt,
       version: 3,
 
       migrate(state, version) {
