@@ -534,7 +534,7 @@ export function ChatActions(props: {
       )}
       {/*显示当前语言地区1*/}
       <IconButton
-          text={"Region: " + Region + " & Output Language: " + Lang}
+          text={"Region: " + Region + " , OutLang: " + Lang}
       />
     </div>
   );
