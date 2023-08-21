@@ -1372,11 +1372,11 @@ export function Chat() {
                         "list in both (English) version ，and output form sheet format as well.\n" + 
                         "===: "+ userInput 
                 } else {
-                    luckyCommand = "Based on the information below, please provide a repair quote list with estimated  materials costs and \n" +
-                        "labor costs separately in " + Region + ", USA  and calculate the total  Costs Range with the numerical  \n" + 
-                        "and output it at the bottom, approximate numbers are fine if exact figures are unavailable ,Please output the all costs \n" + 
-                        "in both (English) version and (" + Lang + ") version separately，and output format must be form sheet ：\n" + 
-                        "===: "+ userInput 
+                    luckyCommand = "Based on the information below, please provide a repair quote list with estimated costs for materials  and \n" +
+                        "labor separately in " + Region + ", USA  and calculate the total  Costs Range with the numerical  \n" + 
+                        "approximate numbers are fine if exact figures are unavailable ,Please output the all costs in both\n" + 
+                        " (English) version and (" + Lang + ") version separately，and output format must be form sheet ：\n" + 
+                        "| "+ userInput 
                 }
                 doSubmit(luckyCommand);
             }}
