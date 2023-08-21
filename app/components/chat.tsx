@@ -1373,8 +1373,8 @@ export function Chat() {
                         "===: "+ userInput 
                 } else {
                     luckyCommand = "Based on the information below, please provide a repair quote list with estimated costs for materials  and \n" +
-                        "labor separately in " + Region + ", USA  and calculate the total  Costs Range with the numerical  \n" + 
-                        "approximate numbers are fine if exact figures are unavailable ,Please output the all costs in both\n" + 
+                        "labor separately in " + Region + ", USA  and calculate the total Costs Range with the numerical, \n" + 
+                        "approximate numbers are fine if exact figures are unavailable ,Please output all quote list information in both\n" + 
                         " (English) version and (" + Lang + ") version separately，and output format must be form sheet ：\n" + 
                         "| "+ userInput 
                 }
