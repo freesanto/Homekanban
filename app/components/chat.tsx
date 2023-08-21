@@ -535,7 +535,7 @@ export function ChatActions(props: {
       )}
       {/*显示当前语言地区1*/}
       <IconButton
-          text={"Region: " + Region + " , Output Language: " + Lang}
+          text={"Region: " + Region + " , OutLanguage: " + Lang}
       />
     </div>
   );
@@ -792,7 +792,7 @@ export function Chat() {
     return null; // 如果未找到匹配的关键词，则返回 null
   }
   function extractLang(input: string): string | null {
-    const languageKeywords = ["Simplified Chinese", "Traditional Chinese", "Korean","Spanish"]; // 可以根据需要添加更多语言关键词
+    const languageKeywords = ["Simplified Chinese", "Traditional Chinese", "Korean","Spanish" ,"English"]; // 可以根据需要添加更多语言关键词
 
     const lowercaseInput = input.toLowerCase();
 
