@@ -1367,13 +1367,13 @@ export function Chat() {
                 let luckyCommand=""
                 if (Lang == "English") {
                       luckyCommand = "Based on the information below, please provide a repair quote list  along with  estimated costs for materials  and \n" +
-                        "labor separately list in " + Region + ", USA . Please Provide costs estimated numerical range if  the accurate estimates  \n" +
+                        "labor separately based in " + Region + ", USA . Please Provide costs estimated numerical range if  the accurate estimates  \n" +
                         "is unavailable , and calculate the total Costs Range with the numerical, Please output all quote list information in  \n" + 
                         " English version  with the table format ：\n" + 
                         "| "+ userInput 
                 } else {
                     luckyCommand = "Based on the information below, please provide a repair quote list  along with  estimated costs for materials  and \n" +
-                        "labor separately list in " + Region + ", USA . Please Provide costs estimated numerical range if  the accurate estimates  \n" +
+                        "labor separately based in " + Region + ", USA . Please Provide costs estimated numerical range if  the accurate estimates  \n" +
                         "is unavailable , and calculate the total Costs Range with the numerical, Please output all quote list information in both \n" + 
                         " English  and " + Lang + " versions list separately  with the table format ：\n" + 
                         "| "+ userInput 
