@@ -1367,12 +1367,14 @@ export function Chat() {
                 let luckyCommand=""
                 if (Lang == "English") {
                     luckyCommand = "Based on the information below, please provide a repair quote list with estimated costs for \n" +
-                        "materials and labor in " + Region + ", USA  and calculate the total costs, Approximate numbers are fine if exact figures are \n" +
-                        "unavailable. Please provide the output in English  and output excel sheet : " + userInput
+                        "materials and labor in " + Region + ", USA  and calculate the total Estimated Cost Range with the numerical, \n" +
+                        "Approximate numbers are fine if exact figures are unavailable. Please provide the output in English and \n" +
+                        "output form sheet format : " + userInput
                 } else {
                     luckyCommand = "Based on the information below, please provide a repair quote list with estimated costs for \n" +
-                        "materials and labor in " + Region + ", USA  and calculate the total costs, Approximate numbers are fine if exact figures are \n" +
-                        "unavailable. Please provide the output in both English and " + Lang + "  and output excel sheet : " + userInput
+                        "materials and labor in " + Region + ", USA  and calculate the total Estimated Cost Range with the numerical, \n" +
+                        "Approximate numbers are fine if exact figures are unavailable. Please provide the output in both English  \n" +
+                        "and " + Lang + " and  output form sheet format : " + userInput
                 }
                 doSubmit(luckyCommand);
             }}
