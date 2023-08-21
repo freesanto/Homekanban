@@ -228,11 +228,11 @@ function useSubmitHandler() {
   };
 }
 
-export type RenderPompt = Pick<Prompt, "title" | "content">;
+export type RenderPrompt = Pick<Prompt, "title" | "content">;
 
 export function PromptHints(props: {
-  prompts: RenderPompt[];
-  onPromptSelect: (prompt: RenderPompt) => void;
+  prompts: RenderPrompt[];
+  onPromptSelect: (prompt: RenderPrompt) => void;
 }) {
   const noPrompts = props.prompts.length === 0;
   const [selectIndex, setSelectIndex] = useState(0);
@@ -394,6 +394,7 @@ function useScrollToBottom() {
   };
 }
 
+//按钮入口
 export function ChatActions(props: {
   showPromptModal: () => void;
   scrollToBottom: () => void;
@@ -534,7 +535,7 @@ export function ChatActions(props: {
       )}
       {/*显示当前语言地区1*/}
       <IconButton
-          text={"Region: " + Region + " , OutLang: " + Lang}
+          text={"Region: " + Region + " , Output Language: " + Lang}
       />
     </div>
   );
@@ -601,8 +602,13 @@ export function EditMessageModal(props: { onClose: () => void }) {
     </div>
   );
 }
-let Region: string="Texas"
-let Lang: string = "English";
+
+//本地存储
+let exRegion = localStorage.getItem("Region")
+let exLang = localStorage.getItem("Lang")
+let Region: string = exRegion == null ? "Texas" : exRegion
+let Lang: string = exLang == null ? "English" : exLang;
+
 export function Chat() {
   type RenderMessage = ChatMessage & { preview?: boolean };
 
@@ -635,8 +641,7 @@ export function Chat() {
 
   // prompt hints
   const promptStore = usePromptStore();
-  const [promptHints, setPromptHints] = useState<RenderPompt[]>([]);
-  const [promptOutLang, setPromptOutLang] = useState<RenderPompt[]>([]);
+  const [promptHints, setPromptHints] = useState<RenderPrompt[]>([]);
   const onSearch = useDebouncedCallback(
     (text: string) => {
       const matchedPrompts = promptStore.search(text);
@@ -801,7 +806,7 @@ export function Chat() {
     return null; // 如果未找到匹配的关键词，则返回 null
   }
   //选择地区或语言
-  const onPromptSelect = (prompt: RenderPompt) => {
+  const onPromptSelect = (prompt: RenderPrompt) => {
     setTimeout(() => {
       setPromptHints([]);
 
@@ -818,6 +823,8 @@ export function Chat() {
         //设置地区或是语言变量
         Lang = extractedLang == undefined ? Lang : extractedLang;
         Region = extractedRegion == undefined ? Region : extractedRegion;
+        localStorage.setItem('Lang', Lang);
+        localStorage.setItem('Region', Region);
       }
       inputRef.current?.focus();
     }, 30);
@@ -1355,14 +1362,19 @@ export function Chat() {
             icon={<MaskIcon />}
             text={"I'm feeling lucky"}
             onClick={ () => {
-              console.log("地区:"+Region)
-              console.log("语言:"+Lang)
+              // console.log("地区:"+Region)
               // console.log("语言:"+Lang)
-              // doSubmit(userInput+", 帮我总结维修清单, 并且根据本地（读取州的内容）给出维修评估报价, 并且给出设定语言的另一个版本输出");
-              // doSubmit(userInput+", 帮我总结维修清单, 并且根据本地"+Region+"给出维修评估报价, 并且给出"+Lang+"的另一个版本输出");
-              doSubmit("Based on the information below, please provide a repair quote list with estimated costs for \n" +
-                  "materials and labor in (" + Region + "), USA. Approximate numbers are fine if exact figures are \n" +
-                  "unavailable. Please provide the output in both English and (" + Lang + "): " + userInput);
+                let luckyCommand=""
+                if (Lang == "English") {
+                    luckyCommand = "Based on the information below, please provide a repair quote list with estimated costs for \n" +
+                        "materials and labor in (" + Region + "), USA. Approximate numbers are fine if exact figures are \n" +
+                        "unavailable. Please provide the output in English: " + userInput
+                } else {
+                    luckyCommand = "Based on the information below, please provide a repair quote list with estimated costs for \n" +
+                        "materials and labor in (" + Region + "), USA. Approximate numbers are fine if exact figures are \n" +
+                        "unavailable. Please provide the output in both English and (" + Lang + "): " + userInput
+                }
+                doSubmit(luckyCommand);
             }}
             className={styles["lucky-button"]}
           />
