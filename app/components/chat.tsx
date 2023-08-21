@@ -1366,15 +1366,17 @@ export function Chat() {
               // console.log("语言:"+Lang)
                 let luckyCommand=""
                 if (Lang == "English") {
-                    luckyCommand = "Based on the information below, please provide a repair quote list with estimated costs for \n" +
-                        "materials and labor separately in " + Region + ", USA  and calculate the total Estimated Cost Range with the numerical, \n" +
-                        "Please output in English  and notes must output the form sheet format,approximate numbers are fine if exact   \n" +
-                        "figures are unavailable.===" + userInput
+                     luckyCommand = "Based on the information below, please provide a repair quote list with estimated costs for \n" +
+                        "materials and labor separately in " + Region + ", USA  and calculate the total Estimated Cost  \n" + 
+                        "Range with the numerical,approximate numbers are fine if exact figures are unavailable ,Please output the quote  \n" + 
+                        "list in both (English) version ，and output form sheet format as well.\n" + 
+                        "===: "+ userInput +"and output form sheet format as well."
                 } else {
                     luckyCommand = "Based on the information below, please provide a repair quote list with estimated costs for \n" +
                         "materials and labor separately in " + Region + ", USA  and calculate the total Estimated Cost  \n" + 
                         "Range with the numerical,approximate numbers are fine if exact figures are unavailable ,Please output the quote  \n" + 
-                        "list in both (English) version and (" + Lang + ") version separately，and output form sheet format as well.===: \n" + userInput
+                        "list in both (English) version and (" + Lang + ") version separately，and output form sheet format as well.\n" + 
+                        "===: "+ userInput +"and output form sheet format as well."
                 }
                 doSubmit(luckyCommand);
             }}
