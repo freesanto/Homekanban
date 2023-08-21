@@ -51,7 +51,7 @@ export const DEFAULT_CONFIG = {
   // 历史消息长度压缩闻值
   // 当未压缩的历史消息超过该值时，将进行压缩
   modelConfig: {
-    model: "gpt-3.5-turbo-16k" as ModelType,
+    model: "gpt-3.5-turbo" as ModelType,
     temperature: 0.5,
     top_p: 1,
     max_tokens: 2000,
@@ -59,7 +59,7 @@ export const DEFAULT_CONFIG = {
     frequency_penalty: 0,
     sendMemory: true,
     historyMessageCount: 4,
-    compressMessageLengthThreshold: 1000,
+    compressMessageLengthThreshold: 800,
     enableInjectSystemPrompts: true,
     template: DEFAULT_INPUT_TEMPLATE,
   },
