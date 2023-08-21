@@ -1366,17 +1366,18 @@ export function Chat() {
               // console.log("语言:"+Lang)
                 let luckyCommand=""
                 if (Lang == "English") {
-                     luckyCommand = "Based on the information below, please provide a repair quote list with estimated costs for \n" +
-                        "materials and labor separately in " + Region + ", USA  and calculate the total Estimated Cost  \n" + 
-                        "Range with the numerical,approximate numbers are fine if exact figures are unavailable ,Please output the quote  \n" + 
-                        "list in both (English) version ，and output form sheet format as well.\n" + 
-                        "===: "+ userInput 
-                } else {
-                    luckyCommand = "Based on the information below, please provide a repair quote list with estimated costs for materials  and \n" +
-                        "labor separately list in " + Region + ", USA , and calculate the total Costs Range with the numerical, \n" + 
-                        "approximate numbers are fine if exact figures are unavailable ,Please output all quote list information in both\n" + 
-                        " (English) version and (" + Lang + ") version separately list，and output format must be form sheet ：\n" + 
+                      luckyCommand = "Based on the information below, please provide a repair quote list  along with  estimated costs for materials  and \n" +
+                        "labor separately list in " + Region + ", USA . Please Provide costs estimated numerical range if  the accurate estimates  \n" +
+                        "is unavailable , and calculate the total Costs Range with the numerical, Please output all quote list information in  \n" + 
+                        " English version  with the table format ：\n" + 
                         "| "+ userInput 
+                } else {
+                    luckyCommand = "Based on the information below, please provide a repair quote list  along with  estimated costs for materials  and \n" +
+                        "labor separately list in " + Region + ", USA . Please Provide costs estimated numerical range if  the accurate estimates  \n" +
+                        "is unavailable , and calculate the total Costs Range with the numerical, Please output all quote list information in both \n" + 
+                        " English  and " + Lang + " versions list separately  with the table format ：\n" + 
+                        "| "+ userInput 
+ 
                 }
                 doSubmit(luckyCommand);
             }}
