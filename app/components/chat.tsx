@@ -1370,13 +1370,13 @@ export function Chat() {
                         "materials and labor separately in " + Region + ", USA  and calculate the total Estimated Cost  \n" + 
                         "Range with the numerical,approximate numbers are fine if exact figures are unavailable ,Please output the quote  \n" + 
                         "list in both (English) version ，and output form sheet format as well.\n" + 
-                        "===: "+ userInput +"and output form sheet format as well."
+                        "===: "+ userInput 
                 } else {
                     luckyCommand = "Based on the information below, please provide a repair quote list with estimated costs for \n" +
-                        "materials and labor separately in " + Region + ", USA  and calculate the total Estimated Cost  \n" + 
-                        "Range with the numerical,approximate numbers are fine if exact figures are unavailable ,Please output the quote  \n" + 
-                        "list in both (English) version and (" + Lang + ") version separately，and output form sheet format as well.\n" + 
-                        "===: "+ userInput +"and output form sheet format as well."
+                        "materials and labor separately in " + Region + ", USA  and calculate the total  Cost Range with the numerical  \n" + 
+                        "and output it at the bottom,approximate numbers are fine if exact figures are unavailable ,Please output the all  \n" + 
+                        "in both (English) version and (" + Lang + ") version separately，and output format must be form sheet  as well：\n" + 
+                        "===: "+ userInput 
                 }
                 doSubmit(luckyCommand);
             }}
