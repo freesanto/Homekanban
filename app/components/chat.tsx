@@ -607,8 +607,8 @@ export function EditMessageModal(props: { onClose: () => void }) {
 //本地存储
 let exRegion = localStorage.getItem("Region")
 let exLang = localStorage.getItem("Lang")
-let Region: string = exRegion == null ? "Texas" : exRegion
-let Lang: string = exLang == null ? "English" : exLang;
+let Region: string = exRegion == null ? "Washington" : exRegion
+let Lang: string = exLang == null ? "Traditional Chinese" : exLang;
 
 export function Chat() {
   type RenderMessage = ChatMessage & { preview?: boolean };
