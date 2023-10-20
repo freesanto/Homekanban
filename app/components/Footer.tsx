@@ -12,7 +12,7 @@ export default function Footer() {
 
   const footerStyle = {
     // backgroundColor: "lightgray",
-    fontSize: "5px",
+    fontSize: "10px",
     color: "gray",
   };
   return (
