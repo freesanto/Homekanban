@@ -23,6 +23,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import { SideBar } from "./sidebar";
+import { RightBar } from "./rightbar";
 import { useAppConfig } from "../store/config";
 import { AuthPage } from "./auth";
 import { getClientConfig } from "../config/client";
@@ -147,9 +148,13 @@ function Screen() {
               <Route path={Path.Settings} element={<Settings />} />
             </Routes>
           </div>
+          <RightBar className={isHome ? styles["sidebar-show"] : ""} />
         </>
+        
       )}
     </div>
+
+    
   );
 }
 
