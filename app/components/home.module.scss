@@ -339,3 +339,15 @@
 .rtl-screen {
   direction: rtl;
 }
+
+
+
+.no-underline, 
+.no-underline:visited, 
+.no-underline:focus, 
+.no-underline:active {
+  text-decoration: none !important;
+  outline: none;
+  color: gray;
+}
+
