@@ -84,6 +84,7 @@ import { prettyObject } from "../utils/format";
 import { ExportMessageModal } from "./exporter";
 import { getClientConfig } from "../config/client";
 import Footer from "@/app/components/Footer";
+
 import lang from "khroma/src/utils/lang";
 
 const Markdown = dynamic(async () => (await import("./markdown")).Markdown, {
@@ -650,7 +651,7 @@ export function Chat() {
     100,
     { leading: true, trailing: true },
   );
-
+  
   // auto grow input
   const [inputRows, setInputRows] = useState(2);
   const measure = useDebouncedCallback(
@@ -706,6 +707,7 @@ export function Chat() {
   };
 
   //位置1
+  
   const doSubmit = (userInput: string) => {
     if (userInput.trim() === "") return;
     const matchCommand = chatCommands.match(userInput);
@@ -1080,7 +1082,9 @@ export function Chat() {
   const [isEditingMessage, setIsEditingMessage] = useState(false);
 
   return (
+    
     <div className={styles.chat} key={session.id}>
+       
       <div className="window-header" data-tauri-drag-region>
         {isMobileScreen && (
           <div className="window-actions">
@@ -1109,6 +1113,7 @@ export function Chat() {
           {/*  {Locale.Chat.Disclaimer(session.messages.length)}*/}
           {/*</div>*/}
         </div>
+        
         <div className="window-actions">
           {!isMobileScreen && (
             <div className="window-action-button">
@@ -1168,7 +1173,7 @@ export function Chat() {
           setShowModal={setShowPromptModal}
         />
       </div>
-
+  
       <div
         className={styles["chat-body"]}
         ref={scrollRef}
@@ -1302,7 +1307,7 @@ export function Chat() {
           );
         })}
       </div>
-
+     
       <div className={styles["chat-input-panel"]}>
         {/*显示当前语言地区2*/}
         <PromptHints prompts={promptHints} onPromptSelect={onPromptSelect} />
