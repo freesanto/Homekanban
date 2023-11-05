@@ -16,6 +16,8 @@ import PluginIcon from "../icons/plugin.svg";
 import DragIcon from "../icons/drag.svg";
 import NextImage from "next/image";
 import Logo from "../icons/logo.png";
+import ads1 from "../pic/WENWEIYAOLOGO.jpg";
+
 import Locale from "../locales";
 
 import { useAppConfig, useChatStore } from "../store";
@@ -259,6 +261,18 @@ export function RightBar(props: { className?: string }) {
           title="点击查看保养日历详情"
         />
       </div>
+
+      <div className={styles["sidebar-header"]}>
+    
+        <a style={{ textDecoration: 'none' }} className="no-underline" href="https://www.inspekhome.com/" target="_blank">
+        <div  >
+              {/*<LogoIcon/>*/}
+              <NextImage src={ads1.src} alt="logo" width={200} height={200} />
+            </div>
+        </a>
+          
+      </div> 
+
     </div>
   );
 }
