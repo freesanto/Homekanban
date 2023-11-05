@@ -16,7 +16,7 @@ import PluginIcon from "../icons/plugin.svg";
 import DragIcon from "../icons/drag.svg";
 import NextImage from "next/image";
 import Logo from "../icons/logo.png";
-import ads1 from "../pic/WENWEIYAOLOGO.jpg";
+import ads1 from "../pic/IMG_2135.jpg";
 
 import Locale from "../locales";
 
