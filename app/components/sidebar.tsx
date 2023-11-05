@@ -165,12 +165,12 @@ export function SideBar(props: { className?: string }) {
             />
           </div>
 
-          {/*左下角设置入口*/}
+          {/*左下角设置入口
           <div className={styles["sidebar-action"]}>
             <Link to={Path.Settings}>
              <IconButton icon={<SettingsIcon />} shadow />
             </Link>
-          </div>
+          </div>*/}
         </div>
         <div>
           <IconButton
