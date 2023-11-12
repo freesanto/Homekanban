@@ -54,7 +54,7 @@ const cn = {
         light: "Light Theme",
         dark: "Dark Theme",
       },
-      Prompt: "Region&Lang",
+      Prompt: "语言/Languag",
       Lang: "Language Select",
       Masks: "Masks",
       Clear: "Clear Context",
