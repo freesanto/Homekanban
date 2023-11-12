@@ -7,7 +7,7 @@ import React, {
   useCallback,
   Fragment,
 } from "react";
-
+import AddIcon from "../icons/add.svg";
 import SendWhiteIcon from "../icons/send-white.svg";
 import BrainIcon from "../icons/brain.svg";
 import RenameIcon from "../icons/rename.svg";
@@ -536,7 +536,8 @@ export function ChatActions(props: {
       )}
       {/*显示当前语言地区1*/}
       <IconButton
-          text={"Region: " + Region + " , OutLanguage: " + Lang}
+          //text={"Region: " + Region + " , OutLanguage: " + Lang}
+          text={"语言/Language: " + Lang}
       />
     </div>
   );
@@ -728,6 +729,7 @@ export function Chat() {
 
 
   //提取语言或地区
+   
   function extractRegion(input: string): string | null {
     // 可以根据需要添加更多地区关键词
     const locationKeywords = [
@@ -790,11 +792,12 @@ export function Chat() {
         return keyword;
       }
     }
+   
 
     return null; // 如果未找到匹配的关键词，则返回 null
-  }
+  }  
   function extractLang(input: string): string | null {
-    const languageKeywords = ["Simplified Chinese", "Traditional Chinese", "Korean","Spanish" ,"English"]; // 可以根据需要添加更多语言关键词
+    const languageKeywords = ["Simplified Chinese", "Traditional Chinese","Japanese", "Korean","Spanish" ,"English"]; // 可以根据需要添加更多语言关键词
 
     const lowercaseInput = input.toLowerCase();
 
@@ -820,13 +823,13 @@ export function Chat() {
       } else {
         // setUserInput(userInput+prompt.content);
         let extractedLang = extractLang(prompt.title);
-        let extractedRegion = extractRegion(prompt.title);
+        //let extractedRegion = extractRegion(prompt.title);
 
         //设置地区或是语言变量
         Lang = extractedLang == undefined ? Lang : extractedLang;
-        Region = extractedRegion == undefined ? Region : extractedRegion;
+        //Region = extractedRegion == undefined ? Region : extractedRegion;
         localStorage.setItem('Lang', Lang);
-        localStorage.setItem('Region', Region);
+        //localStorage.setItem('Region', Region);
       }
       inputRef.current?.focus();
     }, 30);
@@ -1355,30 +1358,40 @@ export function Chat() {
             }}
           />
           <IconButton
+            
             icon={<SendWhiteIcon />}
-            text={Locale.Chat.Send}
+            text={""}
             className={styles["chat-input-send"]}
-            type="primary"
+            
+            type="danger" // This makes it a danger button
             onClick={() => doSubmit(userInput)}
           />
         </div>
         <div>
+        <IconButton
+            
+            
+          />
+        </div>
+        <div>
+          
           <IconButton
             icon={<MaskIcon />}
-            text={"I'm feeling lucky"}
+            type="primary" 
+            text={"AI维修费用生成"}
             onClick={ () => {
-              // console.log("地区:"+Region)
+              // console.log("地区:"+Region) in " + Region + ", USA
               // console.log("语言:"+Lang)
                 let luckyCommand=""
                 if (Lang == "English") {
                       luckyCommand = "Based on the information below, please provide a repair quote list  along with  estimated costs for materials  and \n" +
-                        "labor separately based in " + Region + ", USA . Please Provide costs estimated numerical range if  the accurate estimates  \n" +
+                        "labor separately based in  USA . Please Provide costs estimated numerical range if  the accurate estimates  \n" +
                         "is unavailable , and calculate the total Costs Range with the numerical, Please output all quote list information in  \n" + 
                         " English version  with the table format ：\n" + 
                         "| "+ userInput 
                 } else {
                     luckyCommand = "Based on the information below, please provide a repair quote list  along with  estimated costs for materials  and \n" +
-                        "labor separately based in " + Region + ", USA . Please Provide costs estimated numerical range if  the accurate estimates  \n" +
+                        "labor separately based in  USA . Please Provide costs estimated numerical range if  the accurate estimates  \n" +
                         "is unavailable , and calculate the total Costs Range with the numerical, Please output all quote list information in both \n" + 
                         " English  and " + Lang + " versions list separately  with the table format ：\n " + 
                         "| "+ userInput 
