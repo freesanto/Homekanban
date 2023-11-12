@@ -51,7 +51,8 @@
   }
 }
 .lucky-button{
-  width: 100%;
+  width: 180px;
+  margin: 0 auto; /* 设置左右边距为auto，实现水平居中 */
 }
 .prompt-toast {
   position: absolute;
@@ -59,7 +60,7 @@
   z-index: 999;
   display: flex;
   justify-content: center;
-  width: calc(100% - 40px);
+  //width: calc(100% - 40px);
 
   .prompt-toast-inner {
     display: flex;
