@@ -1378,7 +1378,7 @@ export function Chat() {
           <IconButton
             icon={<MaskIcon />}
             type="primary" 
-            text={"AI维修费用生成"}
+            text={"AI维修费用生成/I'm Feeling Lucky"}
             onClick={ () => {
               // console.log("地区:"+Region) in " + Region + ", USA
               // console.log("语言:"+Lang)
