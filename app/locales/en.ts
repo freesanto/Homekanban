@@ -57,7 +57,7 @@ const en: LocaleType = {
       },
       //Prompt: "Prompts",
       //OutLang: "Language Select",
-      Prompt: "语言/Languag",
+      Prompt: "语言/Language",
       Lang: "Language Select",
       Masks: "Masks",
       Clear: "Clear Context",
