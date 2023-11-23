@@ -6,7 +6,7 @@ export default function Footer() {
 
   const titleStyle = {
     margin: "0",
-    fontSize: "12px",
+    fontSize: "11px",
     color: "black",
   };
 
@@ -17,8 +17,11 @@ export default function Footer() {
   };
   return (
     <div style={disclaimerStyle}>
-      <h5 style={titleStyle}>Disclaimer:</h5>
-      <p style={footerStyle}>{disclaimer}</p>
+      <p style={footerStyle}>
+        <span style={ titleStyle }>Disclaimer:</span>
+        {disclaimer}
+      </p>
     </div>
   );
+  
 }
