@@ -1105,68 +1105,17 @@ export function Chat() {
         <div className={`window-header-title ${styles["chat-body-title"]}`}>
           <div
             className={`window-header-main-title ${styles["chat-body-main-title"]}`}
-            onClickCapture={() => setIsEditingMessage(true)}
+            
+            onClickCapture={() => setIsEditingMessage(false) }
           >
             {!session.topic ? DEFAULT_TOPIC : session.topic}
           </div>
-          <div className="window-header-sub-title">
-            {Locale.Chat.SubTitle(session.messages.length)}
-          </div>
-          {/*<div className="window-header-disclaimer">*/}
-          {/*  {Locale.Chat.Disclaimer(session.messages.length)}*/}
-          {/*</div>*/}
+           
+       
         </div>
         
         <div className="window-actions">
-          {!isMobileScreen && (
-            <div className="window-action-button">
-              <IconButton
-                icon={<RenameIcon />}
-                bordered
-                onClick={() => setIsEditingMessage(true)}
-              />
-            </div>
-          )}
-          <div className="window-action-button">
-            <IconButton
-              icon={<ExportIcon />}
-              bordered
-              title={Locale.Chat.Actions.Export}
-              onClick={() => {
-                setShowExport(true);
-              }}
-            />
-          </div>
-
-          {/*缩小按钮*/}
-          {showMinIcon && (
-              <div className="window-action-button">
-                <IconButton
-                    icon={config.tightBorder ? <MinIcon /> : <MaxIcon />}
-                    bordered
-                    onClick={() => {
-                      config.update(
-                          (config) => (config.tightBorder = !config.tightBorder),
-                      );
-                    }}
-                />
-              </div>
-          )}
-
-          {/*放大按钮*/}
-          {showMaxIcon && (
-            <div className="window-action-button">
-              <IconButton
-                icon={config.tightBorder ? <MinIcon /> : <MaxIcon />}
-                bordered
-                onClick={() => {
-                  config.update(
-                    (config) => (config.tightBorder = !config.tightBorder),
-                  );
-                }}
-              />
-            </div>
-          )}
+         
 
         </div>
 
@@ -1398,8 +1347,8 @@ export function Chat() {
  
                 }
                 doSubmit(luckyCommand);
-            }}
-            className={styles["lucky-button"]}
+            }}className={styles["lucky-button"]}
+            
           />
         </div>
       </div>
