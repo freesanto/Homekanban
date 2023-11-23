@@ -263,8 +263,8 @@ const en: LocaleType = {
     },
   },
   Store: {
-    DefaultTopic: "New Assessment",
-    BotHello: "Hello! How can I assist you today?",
+    DefaultTopic: "AI房屋维修费用评估",
+    BotHello: "你好，请问有什么可以帮到你的吗？",
     Error: "Something went wrong, please try again later.",
     Prompt: {
       History: (content: string) =>
