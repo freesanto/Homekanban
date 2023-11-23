@@ -1,3 +1,5 @@
+
+
 import { useEffect, useRef } from "react";
 
 import styles from "./home.module.scss";
@@ -12,7 +14,7 @@ import CloseIcon from "../icons/close.svg";
 import MaskIcon from "../icons/mask.svg";
 import PluginIcon from "../icons/plugin.svg";
 import DragIcon from "../icons/drag.svg";
-
+import ads1 from "../pic/IMG_2135.jpg";
 import Locale from "../locales";
 
 import { useAppConfig, useChatStore } from "../store";
@@ -140,7 +142,16 @@ export function SideBar(props: { className?: string }) {
       {/*  />*/}
 
       {/*</div>*/}
-
+      <div className={styles["sidebar-header"]}>
+    
+        <a style={{ textDecoration: 'none' }} className="no-underline" href="https://www.inspekhome.com/" target="_blank">
+        <div  >
+              {/*<LogoIcon/>*/}
+              <NextImage src={ads1.src} alt="logo" width={200} height={200} />
+            </div>
+        </a>
+          
+      </div> 
       <div
         className={styles["sidebar-body"]}
         onClick={(e) => {
@@ -149,11 +160,12 @@ export function SideBar(props: { className?: string }) {
           }
         }}
       >
-        <ChatList narrow={shouldNarrow} />
-      </div>
-
+        
+      </div> 
+    
       <div className={styles["sidebar-tail"]}>
         <div className={styles["sidebar-actions"]}>
+           
           <div className={styles["sidebar-action"] + " " + styles.mobile}>
             <IconButton
               icon={<CloseIcon />}
@@ -164,13 +176,8 @@ export function SideBar(props: { className?: string }) {
               }}
             />
           </div>
+ 
 
-          {/*左下角设置入口
-          <div className={styles["sidebar-action"]}>
-            <Link to={Path.Settings}>
-             <IconButton icon={<SettingsIcon />} shadow />
-            </Link>
-          </div>*/}
         </div>
         <div>
           <IconButton
