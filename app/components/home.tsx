@@ -10,6 +10,8 @@ import BotIcon from "../icons/bot.svg";
 import LoadingIcon from "../icons/three-dots.svg";
 
 import { getCSSVar, useMobileScreen } from "../utils";
+ 
+
 
 import dynamic from "next/dynamic";
 import { Path, SlotID } from "../constant";
@@ -24,6 +26,8 @@ import {
 } from "react-router-dom";
 import { SideBar } from "./sidebar";
 import { RightBar } from "./rightbar";
+ 
+import Header from "./header"
 import { useAppConfig } from "../store/config";
 import { AuthPage } from "./auth";
 import { getClientConfig } from "../config/client";
@@ -121,24 +125,17 @@ function Screen() {
   }, []);
 
   return (
-    <div
-      className={
-        styles.container +
-        ` ${
-          config.tightBorder && !isMobileScreen
-            ? styles["tight-container"]
-            : styles.container
-        }`
-      }
-    >
+    <div className={styles.container + ` ${config.tightBorder && !isMobileScreen ? styles["tight-container"] : styles.container}`}>
       {isAuth ? (
         <>
+          
           <AuthPage />
         </>
       ) : (
         <>
+           <Header /> {/*在这里添加Header组件 */}
+           
           <SideBar className={isHome ? styles["sidebar-show"] : ""} />
-
           <div className={styles["window-content"]} id={SlotID.AppBody}>
             <Routes>
               <Route path={Path.Home} element={<Chat />} />
@@ -148,13 +145,11 @@ function Screen() {
               <Route path={Path.Settings} element={<Settings />} />
             </Routes>
           </div>
-          <RightBar className={isHome ? styles["sidebar-show"] : ""} />
+            {/*<RightBar className={isHome ? styles["sidebar-show"] : ""} />*/}
+          
         </>
-        
       )}
     </div>
-
-    
   );
 }
 
