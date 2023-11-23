@@ -1,4 +1,6 @@
+ 
 @mixin container {
+ 
   background-color: var(--white);
   border: var(--border-in-light);
   border-radius: 20px;
@@ -7,24 +9,29 @@
   background-color: var(--white);
   min-width: 100%;
   min-height: 100%;
+ 
   max-width: 100%;
 
   display: flex;
+  
   overflow: hidden;
   box-sizing: border-box;
 
   width: var(--window-width);
   height: var(--window-height);
+ 
 }
 
 .container {
-  @include container();
+@include container();
+ 
 }
-
+ 
+ 
 @media only screen and (min-width: 600px) {
   .tight-container {
     --window-width: 100vw;
-    --window-height: var(--full-height);
+    --window-height: 100vw;
     --window-content-width: calc(100% - var(--sidebar-width));
 
     @include container();
@@ -37,11 +44,35 @@
   }
 }
 
+// 调整内容区样式,避免被头部遮挡
+.window-content {
+  width: var(--window-content-width);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  padding-top: 100px; // 头部高度
+}
+ 
+// 手机端时隐藏头部
+@media only screen and (max-width: 600px) {
+  .header {
+    display: none;
+  }
+  
+  .window-content {
+    padding-top: 0;
+  }
+}
 
 
 .sidebar {
+  margin: 0;
+  padding: 0;
+  padding-top: 100px; // 头部高度
   top: 0;
-  width: var(--sidebar-width);
+  width: var(--sidebar-width -100);
   box-sizing: border-box;
   padding: 20px;
   background-color: var(--second);
@@ -62,6 +93,28 @@
         margin-right: 10px;
       }
     }
+  }
+  .vertical-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .centered-link {
+    color: black; /* 未悬停时的颜色 */
+    text-decoration: none; /* 移除下划线 */
+    transition: color 0.3s ease; /* 添加颜色过渡效果 */
+  
+    &:hover {
+      color: blue; /* 鼠标悬停时的颜色 */
+      text-decoration: underline; /* 显示下划线 */
+    }
+  }
+  
+  .header-button{
+    width: 180px;
+    margin: 0 auto; /* 设置左右边距为auto，实现水平居中 */
   }
 
   &:hover,
@@ -96,12 +149,7 @@
   }
 }
 
-.window-content {
-  width: var(--window-content-width);
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
+ 
 
 .mobile {
   display: none;
@@ -351,3 +399,180 @@
   color: gray;
 }
 
+ 
+
+.header-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-title {
+  color: #fff;
+  text-align: center;
+}
+
+.icon-button {
+  color: #fff;  
+}
+
+
+.header {
+  
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background-color: #3498db;
+  box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  z-index: 1000;
+  
+}
+
+.header-title {
+  font-size: 24px;
+  font-weight: bold;
+ 
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  height: 100%;
+}
+
+  
+  .header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px;
+  }
+
+
+  .logo-content {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+  }
+
+  .header-content {
+    display: flex;
+    padding-top: 25px;
+   // justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  /* 默认样式 */
+
+.nav {
+  display: flex;
+}
+
+.nav a {
+  margin-right: 35px; /* 使用相对单位，根据父元素宽度的5%进行调整 */
+  text-decoration: none; /* 删除默认下划线 */
+  color: black; /* 设置文字颜色为黑色 */
+  position: relative;
+
+  /* 下划线样式 */
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -5px; /* 设置下划线和文字之间的距离为5px */
+    width: 0; /* 初始宽度为0，即不显示下划线 */
+    height: 2px; /* 下划线的高度 */
+    background-color: #00ff00; /* 下划线颜色 */
+    transition: width 0.3s; /* 添加过渡效果，过渡宽度的变化 */
+  }
+
+  &::before {
+    left: 50%; /* 左边下划线从中间开始 */
+    transform: translateX(-50%); /* 使下划线中心点位于文字中间 */
+  }
+
+  &::after {
+    right: 50%; /* 右边下划线从中间开始 */
+    transform: translateX(50%); /* 使下划线中心点位于文字中间 */
+  }
+
+  &:hover::before,
+  &:hover::after {
+    width: 80%; /* 鼠标悬停时下划线宽度变为80% */
+  }
+}
+
+/* 在小屏幕上，将链接垂直排列 */
+@media only screen and (max-width: 600px) {
+  .nav {
+    flex-direction: column;
+    align-items: center; /* 可选，使链接在垂直方向居中 */
+  }
+
+  .nav a {
+    margin-right: 0; /* 在小屏幕上不再设置右边距 */
+    margin-bottom: 10px; /* 在小屏幕上添加底边距，调整链接之间的间距 */
+  }
+}
+
+
+
+  
+  .logo {
+    display: inline-block; /* 防止子元素块状化 */
+  }
+  
+  .icon-button {
+    color: #fff;
+  }
+
+ 
+  .center {
+    display: flex;
+    align-items: center;
+  }
+/*
+
+ 
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background-color: #3498db;
+  box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  z-index: 1000;
+  
+}
+
+.header-title {
+  font-size: 24px;
+  font-weight: bold;
+ 
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  height: 100%;
+}
+
+ 
+   
+   .header {
+    background-color: #3498db; 
+  }
+  
+  .header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px;
+  }
+  
+  .icon-button {
+    color: #fff;
+  }
+  */
