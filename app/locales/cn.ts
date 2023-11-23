@@ -63,13 +63,13 @@ const cn = {
     Rename: "Rename Chat",
     Typing: "Typing…",
     Input: (submitKey: string) => {
-      var inputHints = `${submitKey} to send`;
+      var inputHints = `${submitKey} `;
       if (submitKey === String(SubmitKey.Enter)) {
-        inputHints += ", Shift + Enter to wrap";
+        inputHints += " the home inspection report";
       }
-      return inputHints + ", / to search prompts, : to use commands";
+      return inputHints + " ";
     },
-    Send: "Send",
+    Send: " ",
     Config: {
       Reset: "Reset to Default",
       SaveAs: "Save as Mask",
