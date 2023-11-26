@@ -40,6 +40,7 @@
     "spark-md5": "^3.0.2",
     "use-debounce": "^9.0.4",
     "zustand": "^4.3.8"
+    "axios": "^0.24.0"  // 在这里添加 axios
   },
   "devDependencies": {
     "@tauri-apps/cli": "^1.4.0",
