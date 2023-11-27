@@ -611,8 +611,8 @@ let exLang = localStorage.getItem("Lang")
 let Region: string = exRegion == null ? "Washington" : exRegion
 let Lang: string = exLang == null ? "Traditional Chinese" : exLang;
  
-let myCountry: string | undefined;
-let myCity: string | undefined;
+let myCountry: string ="Washington"  ;
+let myCity: string = "US" ;
 export function Chat() {
   type RenderMessage = ChatMessage & { preview?: boolean };
 
@@ -1328,6 +1328,8 @@ export function Chat() {
         <YourComponent onIPInfoChange={(ipInfo) => {
             myCountry = ipInfo.country ?? 'US';
             myCity = ipInfo.city ?? 'Washington'; 
+            //myCountry = ipInfo.country ?? 'US';
+            //myCity = ipInfo.city ?? 'Washington'; 
         }} 
         />
   <IconButton
