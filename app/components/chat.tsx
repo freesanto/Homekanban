@@ -1319,18 +1319,20 @@ export function Chat() {
           />
         </div>
         <div>
-        <IconButton
-            
-            
+        <IconButton  />
+          <YourComponent onIPInfoChange={(ipInfo) => {
+              myCountry = ipInfo.country ?? 'US';
+              myCity = ipInfo.city ?? 'Washington'; 
+          }} 
           />
         </div>
-        <YourComponent onIPInfoChange={(ipInfo) => {
-        myCountry = ipInfo.country ?? 'US';
-        myCity = ipInfo.city ?? 'Washington'; 
-    }} 
-    />
-        <div>
         
+        <div>
+        <YourComponent onIPInfoChange={(ipInfo) => {
+          myCountry = ipInfo.country ?? 'US';
+          myCity = ipInfo.city ?? 'Washington'; 
+        }} 
+        />
   <IconButton
           
     icon={<MaskIcon />}
