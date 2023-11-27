@@ -1319,18 +1319,15 @@ export function Chat() {
           />
         </div>
         <div>
-        <IconButton  />
-          <YourComponent onIPInfoChange={(ipInfo) => {
-              myCountry = ipInfo.country ?? 'US';
-              myCity = ipInfo.city ?? 'Washington'; 
-          }} 
-          />
+        <IconButton/>
+        
         </div>
         
         <div>
+       
         <YourComponent onIPInfoChange={(ipInfo) => {
-          myCountry = ipInfo.country ?? 'US';
-          myCity = ipInfo.city ?? 'Washington'; 
+            myCountry = ipInfo.country ?? 'US';
+            myCity = ipInfo.city ?? 'Washington'; 
         }} 
         />
   <IconButton
@@ -1339,8 +1336,8 @@ export function Chat() {
    
     type="primary" 
     text={"AI维修费用生成/I'm Feeling Lucky"}
+    
     onClick={() => {
-
       let luckyCommand = "";
       if (Lang === "English") {
         luckyCommand = "Based on the information below, please provide a repair quote list along with estimated costs for materials and \n" +
