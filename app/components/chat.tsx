@@ -1344,16 +1344,16 @@ export function Chat() {
     onClick={() => {
       let luckyCommand = "";
       if (Lang === "English") {
-        luckyCommand = "Based on the information below, please provide a maintenance quotation list based in " + myCity + "  City， " + myCountry + " .\n" +
-          "Include separate estimates for material and labor costs. If precise figures are not available, please provide estimated numerical ranges and \n" +
-          "calculate the total cost range using these figures. Present all quotation information in  English versions  with a tabular format, and provide \n" + 
-          "the total cost at the end of the list. Please indicate the currency unit for the calculated prices in the provided numerical values in the tabular.:\n " + 
+        luckyCommand = "Based on the information below, please provide a repair quote list along with estimated costs for materials and \n" +
+          "labor separately based " + myCity + "  City  " + myCountry + " . Please Provide costs estimated numerical range if the accurate estimates \n" +
+          "is unavailable, and calculate the total Costs Range with the numerical, Please output all quote list information in  \n" + 
+          " English version with the table format ：\n" + 
           "| " + userInput;
       } else {
-        luckyCommand = "Based on the information below, please provide a maintenance quotation list based in " + myCity + "  City， " + myCountry + " .\n" +
-          "Include separate estimates for material and labor costs. If precise figures are not available, please provide estimated numerical ranges and \n" +
-          "calculate the total cost range using these figures. Present all quotation information in both English  and " + Lang + " versions  in a tabular format, \n" + 
-          "and provide the total cost at the end of the list. Please indicate the currency unit for the calculated prices in the provided numerical values in the tabular.:\n " + 
+        luckyCommand = "Based on the information below, please provide a repair quote list along with estimated costs for materials and \n" +
+          "labor separately based in " + myCity + "  City， " + myCountry + " . Please Provide costs estimated numerical range if the accurate estimates \n" +
+          "is unavailable, and calculate the total Costs Range with the numerical, Please output all quote list information in both \n" + 
+          " English and " + Lang + " versions list separately with the table format ：\n " + 
           "| " + userInput;
       }
       doSubmit(luckyCommand);
@@ -1361,7 +1361,6 @@ export function Chat() {
     className={styles["lucky-button"]}
   />
 </div>
-
 
       </div>
       <Footer />
