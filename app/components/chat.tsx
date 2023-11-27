@@ -611,8 +611,8 @@ let exLang = localStorage.getItem("Lang")
 let Region: string = exRegion == null ? "Washington" : exRegion
 let Lang: string = exLang == null ? "Traditional Chinese" : exLang;
  
-let myCountry: string ="Washington"  ;
-let myCity: string = "US" ;
+let myCity: string ="Washington"  ;
+let myCountry : string = "US" ;
 export function Chat() {
   type RenderMessage = ChatMessage & { preview?: boolean };
 
