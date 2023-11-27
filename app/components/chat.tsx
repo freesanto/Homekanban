@@ -1326,16 +1326,12 @@ export function Chat() {
         </div>
         
         <div>
-          
-        <YourComponent
-          onIPInfoChange={(ipInfo) => {
-            
-              // Use the non-null assertion operator here (!) if you are sure ipInfo.country won't be null.
-              myCountry = ipInfo.country!;
-              myCity = ipInfo.city!;
-
-            // 其他你需要做的事情...
-          }}
+        <YourComponent onIPInfoChange={(ipInfo) => {
+            myCountry = ipInfo.country ?? 'US';
+            myCity = ipInfo.city ?? 'Washington';
+        
+        // 其他你需要做的事情...
+        }} 
         />
   <IconButton
     icon={<MaskIcon />}
