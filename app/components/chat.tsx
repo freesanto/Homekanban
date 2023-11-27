@@ -34,7 +34,7 @@ import AutoIcon from "../icons/auto.svg";
 import BottomIcon from "../icons/bottom.svg";
 import StopIcon from "../icons/pause.svg";
 import RobotIcon from "../icons/robot.svg";
-
+import YourComponent from "./YourComponent";
 import {
   ChatMessage,
   SubmitKey,
@@ -610,7 +610,9 @@ let exRegion = localStorage.getItem("Region")
 let exLang = localStorage.getItem("Lang")
 let Region: string = exRegion == null ? "Washington" : exRegion
 let Lang: string = exLang == null ? "Traditional Chinese" : exLang;
-
+ 
+let myCountry: string | undefined;
+let myCity: string | undefined;
 export function Chat() {
   type RenderMessage = ChatMessage & { preview?: boolean };
 
@@ -1322,35 +1324,45 @@ export function Chat() {
             
           />
         </div>
+        
         <div>
           
-          <IconButton
-            icon={<MaskIcon />}
-            type="primary" 
-            text={"AI维修费用生成/I'm Feeling Lucky"}
-            onClick={ () => {
-              // console.log("地区:"+Region) in " + Region + ", USA
-              // console.log("语言:"+Lang)
-                let luckyCommand=""
-                if (Lang == "English") {
-                      luckyCommand = "Based on the information below, please provide a repair quote list  along with  estimated costs for materials  and \n" +
-                        "labor separately based in  USA . Please Provide costs estimated numerical range if  the accurate estimates  \n" +
-                        "is unavailable , and calculate the total Costs Range with the numerical, Please output all quote list information in  \n" + 
-                        " English version  with the table format ：\n" + 
-                        "| "+ userInput 
-                } else {
-                    luckyCommand = "Based on the information below, please provide a repair quote list  along with  estimated costs for materials  and \n" +
-                        "labor separately based in  USA . Please Provide costs estimated numerical range if  the accurate estimates  \n" +
-                        "is unavailable , and calculate the total Costs Range with the numerical, Please output all quote list information in both \n" + 
-                        " English  and " + Lang + " versions list separately  with the table format ：\n " + 
-                        "| "+ userInput 
- 
-                }
-                doSubmit(luckyCommand);
-            }}className={styles["lucky-button"]}
+        <YourComponent
+          onIPInfoChange={(ipInfo) => {
             
-          />
-        </div>
+              // Use the non-null assertion operator here (!) if you are sure ipInfo.country won't be null.
+              myCountry = ipInfo.country!;
+              myCity = ipInfo.city!;
+
+            // 其他你需要做的事情...
+          }}
+        />
+  <IconButton
+    icon={<MaskIcon />}
+    type="primary" 
+    text={"AI维修费用生成/I'm Feeling Lucky"}
+    onClick={() => {
+      let luckyCommand = "";
+      if (Lang === "English") {
+        luckyCommand = "Based on the information below, please provide a repair quote list along with estimated costs for materials and \n" +
+          "labor separately based " + myCity + "  City  " + myCountry + " . Please Provide costs estimated numerical range if the accurate estimates \n" +
+          "is unavailable, and calculate the total Costs Range with the numerical, Please output all quote list information in  \n" + 
+          " English version with the table format ：\n" + 
+          "| " + userInput;
+      } else {
+        luckyCommand = "Based on the information below, please provide a repair quote list along with estimated costs for materials and \n" +
+          "labor separately based in " + myCity + "  City， " + myCountry + " . Please Provide costs estimated numerical range if the accurate estimates \n" +
+          "is unavailable, and calculate the total Costs Range with the numerical, Please output all quote list information in both \n" + 
+          " English and " + Lang + " versions list separately with the table format ：\n " + 
+          "| " + userInput;
+      }
+      doSubmit(luckyCommand);
+    }}
+    className={styles["lucky-button"]}
+  />
+</div>
+
+
       </div>
       <Footer />
 
