@@ -330,9 +330,10 @@
 }
 
 .nav a {
+  color: grey; /* 或者使用其他灰色色值，如 #888 或 rgb(128, 128, 128) */
   margin-right: 35px; /* 使用相对单位，根据父元素宽度的5%进行调整 */
   text-decoration: none; /* 删除默认下划线 */
-  color: black; /* 设置文字颜色为黑色 */
+   
   position: relative;
 
   /* 下划线样式 */
@@ -343,7 +344,7 @@
     bottom: -5px; /* 设置下划线和文字之间的距离为5px */
     width: 0; /* 初始宽度为0，即不显示下划线 */
     height: 2px; /* 下划线的高度 */
-    background-color: #00ff00; /* 下划线颜色 */
+    background-color: rgb(66, 237, 14); /* 下划线颜色 */
     transition: width 0.3s; /* 添加过渡效果，过渡宽度的变化 */
   }
 
@@ -359,8 +360,14 @@
 
   &:hover::before,
   &:hover::after {
-    width: 80%; /* 鼠标悬停时下划线宽度变为80% */
+     
+    width: 60%; /* 鼠标悬停时下划线宽度变为80% */
   }
+}
+
+.nav a:hover {
+  color: black; /* 鼠标悬停时的颜色 */
+   
 }
 
 /* 在小屏幕上，将链接垂直排列 */
