@@ -14,13 +14,16 @@ const YourComponent: React.FC<YourComponentProps> = ({ onIPInfoChange }) => {
   useEffect(() => {
     const fetchIPInfo = async () => {
       try {
-        const response = await axios.get('https://ipinfo.io');
-        const { city, country } = response.data;
+        const response = await axios.get('https://ipinfo.io', {
+          params: {
+            token: '15e0aa1eca8e96',
+          },
+        });
 
-        // Pass the country and city information to the parent component
+        const { country, city } = response.data; // 提取country和city
         onIPInfoChange({ country, city });
       } catch (error) {
-        console.error('Error fetching IP information', error);
+        console.error('Error fetching IP info:', error);
       }
     };
 
