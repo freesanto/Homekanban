@@ -104,44 +104,48 @@ function useDragSideBar() {
   };
 }
 
+ 
 export function SideBar(props: { className?: string }) {
   const chatStore = useChatStore();
-
-  // drag side bar
   const { onDragMouseDown, shouldNarrow } = useDragSideBar();
   const navigate = useNavigate();
   const config = useAppConfig();
-
   useHotKey();
+
+  // 定义字母颜色的映射关系
+// 将 letterColors 定义为任意索引签名的对象
+const letterColors: { [key: string]: string } = {
+  H: 'red',
+  o: 'blue',
+  m: 'green',
+  e: 'pink',
+  k: 'purple',
+  a: 'orange',
+  n: 'pink',
+  b: 'cyan',
+};
+
+
+  // 将文本分解成字母数组，并为每个字母应用颜色
+  const coloredText = "Homekanban".split('').map((letter, index) => (
+    <span key={index} style={{ color: letterColors[letter] || 'black' }}>
+      {letter}
+    </span>
+  ));
 
   return (
     <div
-      className={`${styles.sidebar} ${props.className} ${
-        shouldNarrow && styles["narrow-sidebar"]
-      }`}
+      className={`${styles.sidebar} ${props.className} ${shouldNarrow && styles["narrow-sidebar"]}`}
     >
       <div className={styles["sidebar-header"]} data-tauri-drag-region>
         <div className={styles["sidebar-title"]} data-tauri-drag-region>
-          Homekanban
+          {coloredText}
         </div>
         <div className={styles["sidebar-sub-title"]}>
           Your AI Cost Assessment
         </div>
-        {/*<div className={styles["sidebar-logo"] + " no-dark"}>
-          <LogoIcon/>
-          <NextImage src={Logo.src} alt="logo" width={50} height={50} />
-        </div>*/}
       </div>
-      {/*<div className={styles["sidebar-header-bar"]}>*/}
-      {/*  <IconButton*/}
-      {/*    icon={<MaskIcon />}*/}
-      {/*    text={shouldNarrow ? undefined : Locale.Mask.Name}*/}
-      {/*    className={styles["sidebar-bar-button"]}*/}
-      {/*    onClick={() => navigate(Path.NewChat, { state: { fromHome: true } })}*/}
-      {/*    shadow*/}
-      {/*  />*/}
-
-      {/*</div>*/}
+     
       <div className={styles["sidebar-header"]}>
     
         <a style={{ textDecoration: 'none' }} className="no-underline" href="https://www.inspekhome.com/" target="_blank">
