@@ -6,7 +6,7 @@ import { getClientConfig } from "./config/client";
 import { type Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Homekanban Web",
+  title: "Homekanban Your AI costs Assesment",
   description: "Your AI costs Assesment ",
   viewport: {
     width: "device-width",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     { media: "(prefers-color-scheme: dark)", color: "#fafafa" },
   ],
   appleWebApp: {
-    title: "Homekanban Next Web",
+    title: "Homekanban Your AI costs Assesment",
     statusBarStyle: "default",
   },
 };
