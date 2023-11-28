@@ -127,10 +127,10 @@ export function SideBar(props: { className?: string }) {
         <div className={styles["sidebar-sub-title"]}>
           Your AI Cost Assessment
         </div>
-        <div className={styles["sidebar-logo"] + " no-dark"}>
-          {/*<LogoIcon/>*/}
+        {/*<div className={styles["sidebar-logo"] + " no-dark"}>
+          <LogoIcon/>
           <NextImage src={Logo.src} alt="logo" width={50} height={50} />
-        </div>
+        </div>*/}
       </div>
       {/*<div className={styles["sidebar-header-bar"]}>*/}
       {/*  <IconButton*/}
