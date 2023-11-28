@@ -52,7 +52,7 @@ export const DEFAULT_CONFIG = {
   // 当未压缩的历史消息超过该值时，将进行压缩
   modelConfig: {
     model: "gpt-3.5-turbo-16k" as ModelType,
-    temperature: 0.5,
+    temperature: 0.2,
     top_p: 1,
     max_tokens: 2000,
     presence_penalty: 0,
