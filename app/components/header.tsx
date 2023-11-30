@@ -23,8 +23,10 @@ const Header = () => {
 
         {/* 公司名称模块 */}
         <div className={`${styles["logo-content"]} ${styles.center}`}style={{ marginLeft: '15px' }}>
+          <div>
+            <span>Homekanban</span>
+          </div>
           <div>北美房屋检查</div>
-          <div>Homekanban</div>
         </div>
 
         {/* 超链接菜单模块 */}
