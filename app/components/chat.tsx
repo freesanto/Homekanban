@@ -449,13 +449,7 @@ export function ChatActions(props: {
           icon={<BottomIcon />}
         />
       )}
-      {props.hitBottom && (
-        <ChatAction
-          onClick={props.showPromptModal}
-          text={Locale.Chat.InputActions.Settings}
-          icon={<SettingsIcon />}
-        />
-      )}
+ 
 
       {/*背景色*/}
       {/*<ChatAction*/}
@@ -537,7 +531,7 @@ export function ChatActions(props: {
       {/*显示当前语言地区1*/}
       <IconButton
           //text={"Region: " + Region + " , OutLanguage: " + Lang}
-          text={"语言/Language: " + Lang}
+          text={"语言/Lang: " + Lang}
       />
     </div>
   );
@@ -1320,7 +1314,6 @@ export function Chat() {
         </div>
         <div>
         <IconButton/>
-        
         </div>
         
         <div>
