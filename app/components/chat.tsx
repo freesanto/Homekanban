@@ -529,9 +529,7 @@ export function ChatActions(props: {
         />
       )}
       {/*显示当前语言地区1*/}
-      <IconButton
-          //text={"Region: " + Region + " , OutLanguage: " + Lang}
-          text={"语言/Lang: " + Lang}
+      <IconButton  text={"语言/Lang: " + Lang}
       />
     </div>
   );
@@ -1320,7 +1318,7 @@ export function Chat() {
        
         <YourComponent onIPInfoChange={(ipInfo) => {
             myCountry = ipInfo.country ?? 'US';
-            myCity = ipInfo.city ?? 'Washington'; 
+            myCity = ipInfo.region ?? 'Washington'; 
             //myCountry = ipInfo.country ?? 'US';
             //myCity = ipInfo.city ?? 'Washington'; 
         }} 
@@ -1336,12 +1334,12 @@ export function Chat() {
       let luckyCommand = "";
       if (Lang === "English") {
         luckyCommand = "Based on the information below, please provide a repair quote list along with estimated costs for materials and \n" +
-          "labor separately based " + myCity + " City," + myCountry + " .  Please output all quote list information and total Costs in \n" +
+          "labor separately based " + myCity + " ," + myCountry + " .  Please output all quote list information and total Costs in \n" +
           "English version with tabular format, Please Provide costs estimated numerical range if the accurate estimates is unavailable.\n" + 
           "| " + userInput;
       } else {
         luckyCommand = "Based on the information below, please provide a repair quote list along with estimated costs for materials and \n" +
-          "labor separately based in " + myCity + " City," + myCountry + " .  Please output all quote list information and total Costs in \n" +
+          "labor separately based in " + myCity + " ," + myCountry + " .  Please output all quote list information and total Costs in \n" +
           "two version ,one in English version and another in " + Lang + " version list separately with tabular format, Please Provide costs estimated \n" + 
           "numerical range if the accurate estimates is unavailable.\n" + 
           "| " + userInput;
