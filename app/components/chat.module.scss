@@ -487,6 +487,7 @@
   outline: none;
   box-sizing: border-box;
   min-height: 68px;
+  
 }
 
 .chat-input:focus {
@@ -513,5 +514,10 @@
 
   .chat-input-send {
     bottom: 30px;
+  }
+  .lucky-button{
+    width: 300px;
+    height: 30px;
+    margin: 0 auto; /* 设置左右边距为auto，实现水平居中 */
   }
 }
