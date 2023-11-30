@@ -3,7 +3,7 @@ import axios from 'axios';
 
 interface IPInfo {
   country: string | null;
-  city: string | null;
+  region: string | null;
 }
 
 interface YourComponentProps {
@@ -20,8 +20,8 @@ const YourComponent: React.FC<YourComponentProps> = ({ onIPInfoChange }) => {
           },
         });
 
-        const { country, city } = response.data; // 提取country和city
-        onIPInfoChange({ country, city });
+        const { country, region } = response.data; // 提取country和city
+        onIPInfoChange({ country, region });
       } catch (error) {
         console.error('Error fetching IP info:', error);
       }
